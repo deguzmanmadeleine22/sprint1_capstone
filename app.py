@@ -81,10 +81,17 @@ def load_data():
 df = load_data()
 
 
-bins = [0, 50_000, 200_000, np.inf]
-labels = ["Rural", "Suburban", "Urban"]
+# ------------ #
 
-df['classification'] = pd.cut(df["city_pop"], bins=bins, labels=labels)
+
+
+
+
+
+
+
+
+# -------------- #
 
 # --- 2. SIDEBAR FOR FILTERING AND CONTROLS ---
 st.sidebar.header("Please Filter Here:")
@@ -143,33 +150,33 @@ ax.set_xlabel("Number of Transactions")
 ax.set_ylabel("Category")
 st.pyplot(fig)
 
-st.subheader("Transaction Amount Distribution")
-amount_distribution = filtered_df['amt']
-fig, ax = plt.subplots(figsize=(10, 6))
-sns.histplot(amount_distribution, bins=50, kde=True, ax=ax, color='purple')
-ax.set_title("Distribution of Transaction Amounts")
-ax.set_xlabel("Amount ($)")
-st.pyplot(fig)
+# st.subheader("Transaction Amount Distribution")
+# amount_distribution = filtered_df['amt']
+# fig, ax = plt.subplots(figsize=(10, 6))
+# sns.histplot(amount_distribution, bins=50, kde=True, ax=ax, color='purple')
+# ax.set_title("Distribution of Transaction Amounts")
+# ax.set_xlabel("Amount ($)")
+# st.pyplot(fig)
 
 # --- 5. CUSTOMER SEGMENTATION ---
-st.header("3. Customer Segmentation")
-spending_threshold = st.slider("Define High Spender Threshold ($)", 0, int(filtered_df['amt'].max()), 500)
-
-high_spenders = filtered_df[filtered_df['amt'] > spending_threshold]
-low_spenders = filtered_df[filtered_df['amt'] <= spending_threshold]
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader("High Spender Demographics")
-    st.write(f"Number of transactions above ${spending_threshold}: **{high_spenders.shape[0]}**")
-    if not high_spenders.empty:
-        st.write("Top 5 Cities for High Spenders:")
-        st.dataframe(high_spenders['city'].value_counts().head(5))
-
-with col2:
-    st.subheader("Low Spender Demographics")
-    st.write(f"Number of transactions at or below ${spending_threshold}: **{low_spenders.shape[0]}**")
-    if not low_spenders.empty:
-        st.write("Top 5 Cities for Low Spenders:")
-        st.dataframe(low_spenders['city'].value_counts().head(5))
+# st.header("3. Customer Segmentation")
+# spending_threshold = st.slider("Define High Spender Threshold ($)", 0, int(filtered_df['amt'].max()), 500)
+#
+# high_spenders = filtered_df[filtered_df['amt'] > spending_threshold]
+# low_spenders = filtered_df[filtered_df['amt'] <= spending_threshold]
+#
+# col1, col2 = st.columns(2)
+#
+# with col1:
+#     st.subheader("High Spender Demographics")
+#     st.write(f"Number of transactions above ${spending_threshold}: **{high_spenders.shape[0]}**")
+#     if not high_spenders.empty:
+#         st.write("Top 5 Cities for High Spenders:")
+#         st.dataframe(high_spenders['city'].value_counts().head(5))
+#
+# with col2:
+#     st.subheader("Low Spender Demographics")
+#     st.write(f"Number of transactions at or below ${spending_threshold}: **{low_spenders.shape[0]}**")
+#     if not low_spenders.empty:
+#         st.write("Top 5 Cities for Low Spenders:")
+#         st.dataframe(low_spenders['city'].value_counts().head(5))
