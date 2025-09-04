@@ -68,11 +68,11 @@ st.markdown("""
 @st.cache_data
 def load_data():
     """
-    Loads the credit card transaction data from the CSV file,
+    Loads the credit card transaction data from the CSV files,
     converts 'trans_datetime' to a datetime object, and
     extracts the year and month for filtering.
     """
-    df = pd.read_csv('/Users/madeleinedg/Documents/Eskwelabs/Ongoing Projects/cc_clean.csv')
+    df = pd.read_csv('files/cc_clean.csv')
     df['trans_datetime'] = pd.to_datetime(df['trans_datetime'])
     df['trans_year'] = df['trans_datetime'].dt.year
     df['trans_month'] = df['trans_datetime'].dt.month
