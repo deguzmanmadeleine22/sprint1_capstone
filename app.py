@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import plotly.express as px
 
 
 st.title("Sprint 1 Capstone")
