@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import plotly.express as px
 
 # --- 1. APP CONFIGURATION & STYLING ---
 st.set_page_config(
